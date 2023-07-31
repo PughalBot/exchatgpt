@@ -1,0 +1,18 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <title>ChatGPT Extension</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" type="text/css" href="styles.css">
+  </head>
+  <body>
+    <div id="root"></div>
+    <script src="bundle.js"></script>
+    <script>
+      // Add this script to send a message to the content script when the extension page loads
+      chrome.tabs.query({ active: true, currentWindow: true }, function (tabs) {
+        chrome.tabs.sendMessage(tabs[0].id, 'extensionLoaded');
+      });
+    </script>
+  </body>
+</html>
